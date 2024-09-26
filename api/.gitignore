@@ -1,0 +1,22 @@
+# dotenv environment variables file
+.env
+# Nuxt dev/build outputs
+.output
+# nuxt.js build output
+.nuxt
+# Nuxt generate
+dist
+# PHP environment variables file
+env_config.php
+# Log files
+log
+logs
+*.log
+# Node dependencies
+node_modules
+# HIYOSHI original
+sftp-config.json
+# Sequelize configuration
+config.json
+files
+config/closing.json

@@ -1,0 +1,290 @@
+@charset "UTF-8";
+*{
+	--line:#00B900;
+}
+body{
+	background:#F0F1F2;
+}
+
+/* loading */
+.vld-overlay{bottom:0;left:0;position:absolute;right:0;top:0;align-items:center;display:none;justify-content:center;overflow:hidden;z-index:999}.vld-overlay.is-active{display:flex}.vld-overlay.is-full-page{z-index:999;position:fixed}.vld-overlay .vld-background{bottom:0;left:0;position:absolute;right:0;top:0;background:#fff;opacity:.5}.vld-overlay .vld-icon,.vld-parent{position:relative}
+/* app */
+[v-cloak]{display:none}
+
+/* terms */
+#terms{
+	height:100vh;
+	width:100vw;
+	overflow:scroll;
+	position:fixed;
+	display: flex;
+	flex-flow:column nowrap;
+	justify-content: flex-start;
+	align-items: center;
+	padding:3em 1em;
+}
+
+#terms > h1{color:#FFF;font-size:5vmin;font-weight:400;margin-bottom:1.5em;}
+#terms > p{color:#FFF;font-size:4vmin;line-height:1.5em;margin-bottom:0.6em;text-align:justify;padding:0 0.5em;}
+
+#terms #agreebox{background: linear-gradient(135deg, #E4E6ED, #EAECF1);border-radius:1em;
+width:100%;padding:2em;filter: drop-shadow(0px 0px 6px rgba(0,0,0,0.22));margin-top:2em;}
+
+#terms #agreebox p{color:#3B3B4D;}
+#terms #agreebox h2{color:#3B3B4D;text-align:center;margin:2em auto;font-size:4.4vmin;}
+
+#terms #agreebox .split{
+	display: flex;
+	flex-flow:row nowrap;
+	justify-content: space-between;
+	align-items: stretch;
+	padding:0.3em;
+}
+
+#terms #agreebox .split button{
+	border-radius:0.7em;
+	background: #eaeef1;
+	box-shadow:  5px 5px 9px #cccfd2, 
+	             -5px -5px 9px #ffffff;
+	display: flex;
+	flex-flow:column nowrap;
+	justify-content: center;
+	align-items: center;
+	padding:0.8em;
+	width:45%;
+	filter: drop-shadow(-5px -5px 10px rgba(255,255,255,0.22));
+	font-size:4vmin;
+}
+
+#terms #agreebox .split button:active{
+	border-radius:0.7em;
+	background: #eaeef1;
+	box-shadow: inset 5px 5px 9px #cccfd2, 
+	            inset -5px -5px 9px #ffffff;
+
+}
+#terms #agreebox .split button.none{color:#DD5914;}
+
+
+/* counter */
+#counter{
+	background:#F0F1F2;
+	display: flex;
+	flex-flow:column nowrap;
+	justify-content: flex-start;
+	align-items: center;
+	min-height:100vh;
+	width:100vw;
+	padding-top:3em;
+	overflow:hidden;
+	position:absolute;
+}
+
+#counter h1{
+	display: flex;
+	flex-flow:column nowrap;
+	justify-content: center;
+	align-items: center;
+	color:#64646E;
+	height: 3em;
+	width: 80vmin;
+	background: #F7F8FA;
+	border-radius: 0.3em;
+	box-shadow: -3px -3px 7px #ffffffa6, 1px 1px 10px rgba(125, 125, 125, 0.25);
+	position: relative;
+	margin-bottom:1.5em;
+}
+#counter h1::after{
+	content: '';
+	position: absolute;
+	height: 2.8em;
+	width: 79vmin;
+	background-color: #F0F1F2;
+	border-radius: 0.3em;
+	box-shadow: inset -3px -3px 7px #F0F1F2, inset 3px 3px 3px rgba(125, 125, 125, 0.15);	
+}
+#counter h1 span{
+	display:block;
+	position:relative;
+	z-index:99;
+	font-size:6vmin;
+	font-weight:600;
+}
+
+
+#circle {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 80vmin;
+	width: 80vmin;
+	background: linear-gradient(215deg, #3499FF, #3A3985);
+	border-radius: 50%;
+	box-shadow: -3px -3px 7px #ffffffa6, 3px 3px 7px rgba(94, 104, 121, 0.712);
+	position: relative;
+	z-index:2;
+}
+#circle:after {
+	content: '';
+	position: absolute;
+	height: 70vmin;
+	width: 70vmin;
+	background-color: #F0F1F2;
+	border-radius: 50%;
+	box-shadow: inset -3px -3px 7px #F0F1F2, inset 3px 3px 7px rgba(94, 104, 121, 0.671);
+}
+
+#clock{
+	position:relative;
+	z-index:99;
+	display: flex;
+	flex-flow:column nowrap;
+	justify-content: center;
+	align-items: center;
+}
+#clock p{
+	font-size:5vmin;
+	font-weight:600;
+	color:#64646E;
+	margin-top:-8vmin;
+	margin-bottom:4vmin;
+}
+#clock p span{
+	font-size:0.9em;
+}
+#clock h2{
+	color:#3939A5;
+	font-size:18vmin;
+	font-weight:600;
+}
+#clock h3{
+	color:#b4d9ff;
+	font-size:7vmin;
+	margin-top:1em;
+}
+
+
+#counter .split{
+	margin-top:2em;
+	display: flex;
+	flex-flow:row nowrap;
+	justify-content: space-between;
+	align-items: stretch;
+	padding:0.3em;
+	width:80vmin;
+}
+
+#counter .split button{
+	height:35vmin;
+	width:35vmin;
+	color:#FFF;
+	font-size:8vmin;
+	border-radius: 50%;
+}
+
+#counter .split button.enter{
+	background: linear-gradient(145deg, #2983ED, #4F56B1);
+	box-shadow:  6px 6px 10px #d1d1d1, 
+	             -6px -6px 10px #ffffff;
+
+}
+
+#counter .split button.exit{
+	background: linear-gradient(145deg, #FFA62E, #EA4D2C);
+	box-shadow:  6px 6px 10px #d1d1d1, 
+	             -6px -6px 10px #ffffff;
+}
+
+#counter .split button:active,
+#counter .split button:focus,
+#counter .split button.active{
+box-shadow: inset 6px 6px 7px rgba(80,80,80,0.3), 
+            inset -6px -6px 7px rgba(80,80,80,0.1);
+}
+#counter .split button.enter:active,
+#counter .split button.enter:focus,
+#counter .split button.enter.active{
+	background: linear-gradient(145deg, #9dcaff, #4b51a2);
+}
+#counter .split button.exit:active,
+#counter .split button.exit:focus,
+#counter .split button.exit.active{
+	background: linear-gradient(145deg, #ffbe65, #883725);
+}
+
+
+#counter .split button:active span,
+#counter .split button:focus span,
+#counter .split button.active:focus span{
+	font-size:0.97em;
+}
+
+
+
+
+#friend{
+	padding:3em 0;
+	width:80vmin;
+}
+#friend h3,#friend p{color:#64646E;}
+
+#friend h3{
+	font-size:18px;
+	margin-bottom:1em;
+}
+
+#friend p{text-align: justify;font-size:16px;line-height:1.3em;}
+
+#friend #add-friend{
+	display: flex;
+	flex-flow:row wrap;
+	justify-content: center;
+	align-items: center;
+	padding:1em 0;
+}
+
+#friend #add-friend a{
+	background:var(--line);
+	color:#FFF;
+	border-radius:0.2em;
+	padding:0 0.7em;
+	display: flex;
+	flex-flow:row wrap;
+	justify-content: center;
+	align-items: center;
+	font-weight:500;
+	font-size:4vmin;
+}
+
+[linelogo]{
+	display:inline-block;
+	width:1.5em;
+	height:1.5em;
+	background:url(/common/linelogo.svg) 50% 50% no-repeat;
+	background-size:cover;
+	margin:0.5em 0.5em 0.5em 0;
+}
+
+.vail{
+	color:#F00;
+	text-align:center;
+	font-weight:500;
+	font-size:14px;
+	line-height:1.3em;
+}
+
+
+#inputStudentCode{
+	background:#FFF;
+	color:#555;
+	padding:0.4em 0.5em;
+	border-radius:0.3em;
+	font-size:18px;
+}
+input#inputStudentCode::placeholder {
+  color: #dfdfdf;
+}
+
+
+
+

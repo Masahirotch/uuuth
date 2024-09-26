@@ -1,0 +1,1 @@
+You need to add files folder to your api folder for uploading line image or video.

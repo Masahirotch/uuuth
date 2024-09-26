@@ -1,0 +1,94 @@
+@charset "UTF-8";
+/*
+common-flex
+*********************************/
+
+.flex{ display: flex; }
+.inline-flex{ display : inline-flex; }
+
+
+
+
+/* direction */
+.row{            flex-direction : row; }
+.row-reverse{    flex-direction : row-reverse; }
+.column{         flex-direction : column; }
+.column-reverse{ flex-direction : column-reverse; }
+
+.wrap{           flex-wrap : wrap; }
+.wrap-reverse{   flex-wrap : wrap-reverse; }
+.nowrap{         flex-wrap : nowrap; }
+
+.column-wrap{    flex-flow : column wrap; }
+.column-nowrap{  flex-flow : column nowrap; }
+.row-wrap{       flex-flow : row wrap; }
+.row-nowrap{     flex-flow : row nowrap; }
+
+
+/* flex-content */
+.flex-start{   justify-content : flex-start; }
+.flex-center{  justify-content : center; }
+.flex-around{  justify-content : space-around; }
+.flex-end{     justify-content : flex-end; }
+.flex-between{ justify-content : space-between; }
+
+
+/* align-tems */
+.flex-align-start{   align-items : flex-start; }
+.flex-align-center{  align-items : center; }
+.flex-align-end{     align-items : flex-end; }
+.flex-align-stretch{ align-items : stretch; }
+.flex-baseline{      align-items : baseline; }
+
+
+/* align-self */
+.flex-self-stretch{ align-self: stretch;}
+
+
+/* align-content */
+.flex-align-content-stretch { align-content: stretch; }
+.flex-align-content-start {   align-content: flex-start; }
+.flex-align-content-end {     align-content: flex-end; }
+.flex-align-content-center {  align-content: center; }
+.flex-align-content-between { align-content: space-between; }
+.flex-align-content-around {  align-content: space-around; }
+
+
+/*flex-default
+/////////////////////////////////////////
+*/
+.flex-default{
+	display: flex;
+	flex-flow:row wrap;
+	justify-content: flex-start; 
+	align-items: center;
+}
+
+
+
+
+/* flex-center-center */
+
+.flex-center{
+	display: flex;
+	
+	justify-content: center;
+	align-items: center;
+}
+
+.flex-half{
+    display: flex;
+    flex-flow:row nowrap;
+    justify-content: space-between;
+    align-items: center;
+}
+.flex-half > *{
+    width:49%;
+}
+
+
+
+
+
+
+

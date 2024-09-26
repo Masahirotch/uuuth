@@ -1,0 +1,11 @@
+@charset "UTF-8";
+
+*:lang(zh-cmn-Hans),.font-cn{
+  font-family:"Microsoft YaHei", "微软雅黑",'SimSun', sans-serif;
+}
+*:lang(zh-cmn-Hant),.font-tc{
+  font-family:"Microsoft JhengHei", "微軟正黑體", 'PMingLiU' , sans-serif;
+}
+*:lang(ko),.font-ko{
+  font-family: "SF Pro KR","SF Pro Text","SF Pro Icons","Apple Gothic","HY Gulim","MalgunGothic","HY Dotum","Lexi Gulim","Helvetica Neue","Helvetica","Arial",sans-serif;
+}

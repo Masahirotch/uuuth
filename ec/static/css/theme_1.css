@@ -1,0 +1,12 @@
+*{
+	--line         : #00B900;
+	--main-color   : rgb(96, 47, 1);
+    --main-light   : rgb(135, 78, 0);
+    --bg           : rgb(255, 255, 255);
+    --bg-light     : rgb(247, 247, 247);
+    --text-color   : rgb(96, 47, 1);
+    --footer-text  : rgb(96, 47, 1);
+    --cart-btn     : #FFF;
+    --cart-btn-bg  : rgb(96, 47, 1);
+    --cart-btn-light: #954800;
+}

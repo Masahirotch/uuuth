@@ -1,0 +1,111 @@
+@charset "UTF-8";
+
+#wp-admin-bar-wp-logo,#wp-admin-bar-comments,#wp-admin-bar-new-post,#wpfooter{display:none !important;}
+
+#postdivrich #content{
+    resize:vertical !important;
+}
+
+/*************************************************************************
+
+
+タブ切り替え全体のスタイル
+
+
+
+
+**************************************************************************/
+.tab-set *{
+    box-sizing: border-box !important;
+}
+
+.tab-set h4{
+    width:100%;
+}
+
+.tabs {margin-top: 50px;padding-bottom: 1em;background-color: #fff;margin: 0 auto;width:100%;}
+/*タブのスタイル*/
+label .tab-item {height: auto;border-bottom: 1px solid #b90083;background-color: #FFF;line-height: 2.5em;
+    font-size: 14px;text-align: center;color: #444;display: block;text-align: center;transition: all 0.2s ease;
+    float: left;
+}
+label.tab-item:hover{background:#e0ffff;cursor: pointer;}
+
+
+.component textarea,.component input[type="text"]{
+    color:#4d4d4d;
+    border:1px solid #aaa;
+    border-radius:0.4em;
+    display:block;
+    padding:0.5em;
+    width:100%;
+    font-size:16px;
+    width:100%;
+}
+.component .tab-content{
+    width:100%;
+}
+
+
+.tabs > label{
+    color: #444;
+    line-height: 1.6em;
+    font-size: 16px;
+    padding:0.3em 0.5em;
+}
+
+
+
+.tab-split-2,
+.tab-split-3,
+.tab-split-4,
+.tab-split-5,
+.tab-split-6,
+.tab-split-7,
+.tab-split-8{
+    display: -webkit-flex; display: -ms-flexbox; display: flex;
+    -ms-flex-flow:row wrap; flex-flow:row wrap;
+    -webkit-justify-content: space-between;-ms-flex-pack: justify; justify-content: space-between;
+}
+
+.tab-split-3 > [class^="tab-item"]{ width: calc( 100% / 3 ); }
+.tab-split-4 > [class^="tab-item"]{ width: calc( 100% / 4 ); }
+.tab-split-5 > [class^="tab-item"]{ width: calc( 100% / 5 ); }
+.tab-split-6 > [class^="tab-item"]{ width: calc( 100% / 6 ); }
+.tab-split-7 > [class^="tab-item"]{ width: calc( 100% / 7 ); }
+.tab-split-8 > [class^="tab-item"]{ width: calc( 100% / 8 ); }
+
+
+[class^="tab-split-"] > [class^="tab-content"]{width:100%;}
+
+/*ラジオボタンを全て消す*/
+input[name^="tab-item"] { display: none !important; }
+
+.tabs label{text-align:center;display:block;border-bottom:1px solid #333;}
+
+/*選択されているタブのスタイルを変える*/
+.tabs input:checked + .tab-item { background-color: #2379d0; color: #fff !important; }
+
+.tabs .tab-content { display: none; padding: 1em 3px;
+    clear: both;
+    overflow: hidden;
+}
+
+.tabs #label-editor-en:checked ~ #item-editor-en,
+.tabs #label-editor-ko:checked ~ #item-editor-ko,
+.tabs #label-editor-cn:checked ~ #item-editor-cn,
+.tabs #label-editor-tc:checked ~ #item-editor-tc,
+.tabs #label-editor-th:checked ~ #item-editor-th
+{display:block;}
+
+#item-editor-en,
+#item-editor-ko,
+#item-editor-cn,
+#item-editor-tc,
+#item-editor-th
+{width:100%;}
+
+
+
+
+

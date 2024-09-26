@@ -1,0 +1,31 @@
+{
+  "name": "ec",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "nuxt --port 5656",
+    "build": "nuxt build",
+    "start": "nuxt start --port 5656",
+    "generate": "nuxt generate"
+  },
+  "dependencies": {
+    "@line/bot-sdk": "^7.4.0",
+    "@nuxtjs/axios": "^5.13.6",
+    "@nuxtjs/dotenv": "^1.4.1",
+    "axios-jsonp": "^1.0.4",
+    "core-js": "^3.15.1",
+    "dayjs": "^1.10.7",
+    "element-ui": "^2.15.2",
+    "express": "^4.17.1",
+    "mariadb": "^2.5.5",
+    "morgan": "^1.10.0",
+    "nodemailer": "^6.7.2",
+    "nuxt": "^2.15.7",
+    "nuxt-stripe-module": "^3.2.0",
+    "stripe": "^10.2.0",
+    "swiper": "^5.4.5",
+    "ua-parser-js": "^1.0.32",
+    "vue-awesome-swiper": "^4.1.1",
+    "winston": "^3.8.2"
+  }
+}

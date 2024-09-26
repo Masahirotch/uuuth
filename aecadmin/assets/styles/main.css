@@ -1,0 +1,16 @@
+.has-label-with-icon button {
+  height: 0px !important;
+}
+
+.v-text-field .v-messages__message {
+  color: red !important;
+}
+
+.linemsg-tag-list .v-select__selections {
+  height: 35px !important;
+  overflow-y: hidden !important;
+}
+
+.active-content-type {
+  background: #cccccc94;
+}

@@ -1,0 +1,827 @@
+@charset "UTF-8";
+
+/*
+variable
+------------------------------*/
+:root,* {
+    --mono-color:#222;
+    --mono-color-light:#4E4E4E;
+    --mono-color-light-2:#6d6d6d;
+    --mono-color-lightness:#cfcfcf;
+    --base-color:#007AFF;
+
+    --site-color:#222C58;
+    --point-color:#4C829A;
+    --header-color:#771C22;
+    --map-color:#CBCBCB;
+
+    /*
+    SVG Icon URL ▼ usage ▼
+
+    .facebook-icon::before,.facebook-icon::after{
+        background: var(--facebook-svg);
+        background-position:50% 050%;
+        background-repeat:  no-repeat;
+        background-origin: content-box;
+        content: '';
+        display: inline-block;
+        width: 1.2em;
+        height: 1.2em;
+        vertical-align: middle;
+        background-size:100%;
+    }
+    */
+
+    --weibo-svg    : url('data:image/svg+xml;base64,PHN2ZyBpZD0i44Os44Kk44Ok44O8XzEiIGRhdGEtbmFtZT0i44Os44Kk44Ok44O8IDEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgdmlld0JveD0iMCAwIDEwMCAxMDAiPjxkZWZzPjxzdHlsZT4uY2xzLTF7ZmlsbDojZmZmO308L3N0eWxlPjwvZGVmcz48dGl0bGU+d2VpYm88L3RpdGxlPjxwYXRoIGNsYXNzPSJjbHMtMSIgZD0iTTc1LjMzLDM0LjM3QTUuMzgsNS4zOCwwLDAsMCw3MCwzMi42MWEzLDMsMCwwLDEtMi4yNy0uNDEsMi41NywyLjU3LDAsMCwxLTEuMjUtMS44NiwyLjksMi45LDAsMCwxLC40LTIuMjQsMi44NCwyLjg0LDAsMCwxLDEuODYtMS4yOCwxMS41LDExLjUsMCwwLDEsNiwuMjgsMTEuMjQsMTEuMjQsMCwwLDEsNS4wOCwzLjI5LDExLjUxLDExLjUxLDAsMCwxLDIuNzQsNS40NiwxMS4xMywxMS4xMywwLDAsMS0uMzMsNS45MSwyLjk0LDIuOTQsMCwwLDEtMS40OCwxLjcxLDIuODcsMi44NywwLDAsMS0yLjI0LjIsMi45NCwyLjk0LDAsMCwxLTEuNzEtMS40OCwyLjg3LDIuODcsMCwwLDEtLjItMi4yNEE1LjM0LDUuMzQsMCwwLDAsNzUuMzMsMzQuMzdaTTkzLjg0LDQ1LjUzYTMuMzUsMy4zNSwwLDAsMS0xLjcxLDIsMy4yMSwzLjIxLDAsMCwxLTIuNjEuMjEsMy40MiwzLjQyLDAsMCwxLTItMS43MSwzLjM3LDMuMzcsMCwwLDEtLjI2LTIuNjIsMTYuODQsMTYuODQsMCwwLDAtMy41Mi0xNi42QTE2LjM3LDE2LjM3LDAsMCwwLDc2LjI5LDIyYTE3LjMsMTcuMywwLDAsMC04LjcxLS40MywzLjQ3LDMuNDcsMCwwLDEtNC4xMi0yLjY3LDMuMjksMy4yOSwwLDAsMSwuNDgtMi41OSwzLjM1LDMuMzUsMCwwLDEsMi4xOS0xLjQ4LDI0LDI0LDAsMCwxLDEyLjI3LjU4LDIzLDIzLDAsMCwxLDEwLjQ2LDYuNzYsMjMuMjMsMjMuMjMsMCwwLDEsNS42NiwxMS4xOUEyMywyMywwLDAsMSw5My44NCw0NS41M1pNODEuNjIsNjguOGEyNC44NCwyNC44NCwwLDAsMS01LjQ5LDYuODksNDEuODUsNDEuODUsMCwwLDEtOC40Nyw1LjkxLDQ2Ljg1LDQ2Ljg1LDAsMCwxLTExLjM3LDQuMTcsNTguMTgsNTguMTgsMCwwLDEtMTMuNjEsMS41Niw1Nyw1NywwLDAsMS0xMy44My0xLjY4QTQ5LjE2LDQ5LjE2LDAsMCwxLDE2Ljc2LDgxYTI1LjksMjUuOSwwLDAsMS04LjYzLTcuNTksMTcsMTcsMCwwLDEtMy4yNy0xMEEyNi4xNSwyNi4xNSwwLDAsMSw4LjM2LDUxYTU1LjgyLDU1LjgyLDAsMCwxLDkuOTMtMTNxOC41MS04LjUxLDE3LjE4LTExLjg3dDEyLjQuMzVxMy4yNywzLjIxLDEsMTAuNTFhMS41NSwxLjU1LDAsMCwwLDAsMSwuNjIuNjIsMCwwLDAsLjUxLjM1LDIsMiwwLDAsMCwuNzMsMCw1LDUsMCwwLDAsLjY3LS4xN2wuMzEtLjFhMzIuMjYsMzIuMjYsMCwwLDEsMTIuMzctM2MzLjU5LDAsNi4xNSwxLDcuNywzLjA3czEuNSw1LjA5LDAsOWE2LjQ5LDYuNDksMCwwLDEtLjIzLDEsLjUyLjUyLDAsMCwwLC4yMy42MywyLjMyLDIuMzIsMCwwLDAsLjYuMzdsLjg2LjMxYTIyLDIyLDAsMCwxLDUuMTcsMi4zNiwxMy4xNiwxMy4xNiwwLDAsMSw0LDQuMSwxMC41NywxMC41NywwLDAsMSwxLjcxLDUuODZBMTUuMjQsMTUuMjQsMCwwLDEsODEuNjIsNjguOFpNNjMuNTEsNTNBMjQuNzgsMjQuNzgsMCwwLDAsNTMsNDcuNTRhMzguMzEsMzguMzEsMCwwLDAtMTMuOC0xUTI4LDQ3LjY1LDIwLjYzLDUzLjYxVDE0LDY2LjkxYTEzLjE2LDEzLjE2LDAsMCwwLDQuNDgsOC41NUEyNC42NywyNC42NywwLDAsMCwyOC45Myw4MWEzOC4zNSwzOC4zNSwwLDAsMCwxMy44MSwxUTU0LDgwLjg1LDYxLjMyLDc0Ljg5VDY4LDYxLjU4QTEzLjExLDEzLjExLDAsMCwwLDYzLjUxLDUzWk01Mi4zLDY5LjYzYTE0LjQxLDE0LjQxLDAsMCwxLTcuOTUsNy41NCwxNS42OCwxNS42OCwwLDAsMS0xMS4yNy42MSwxMS4zOSwxMS4zOSwwLDAsMS03LjQyLTYuMzdBMTAuNjYsMTAuNjYsMCwwLDEsMjYsNjJhMTQuODUsMTQuODUsMCwwLDEsNy42Mi03QTE1LjkzLDE1LjkzLDAsMCwxLDQ0LjIsNTRhMTEuOTIsMTEuOTIsMCwwLDEsOCw2QTEwLjQ2LDEwLjQ2LDAsMCwxLDUyLjMsNjkuNjNaTTQyLjg0LDYyYTIsMiwwLDAsMC0xLjQ0LDAsMiwyLDAsMCwwLTEuMDguOTNjLS41NywxLS4zNSwxLjc5LjY2LDIuMjZhMi4xLDIuMSwwLDAsMCwxLjQ2LDAsMiwyLDAsMCwwLDEuMS0uOTQsMS41MSwxLjUxLDAsMCwwLC4xOC0xLjMzQTEuNDUsMS40NSwwLDAsMCw0Mi44NCw2MlpNMzcuMSw2NC4zNWE1LjA5LDUuMDksMCwwLDAtMy42NywwLDUuNSw1LjUsMCwwLDAtMywyLjMxLDQuMjEsNC4yMSwwLDAsMC0uNjUsMy40NCwzLjczLDMuNzMsMCwwLDAsMi4xNiwyLjU0LDQuODksNC44OSwwLDAsMCwzLjc1LjEzLDUuNzUsNS43NSwwLDAsMCwzLjE0LTIuMzksNC4xOCw0LjE4LDAsMCwwLC41Ni0zLjQ3QTMuNzYsMy43NiwwLDAsMCwzNy4xLDY0LjM1WiIvPjwvc3ZnPg==');
+    --facebook-svg : url(data:image/svg+xml;base64,PHN2ZyBpZD0i44Os44Kk44Ok44O8XzEiIGRhdGEtbmFtZT0i44Os44Kk44Ok44O8IDEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgdmlld0JveD0iMCAwIDEwMCAxMDAiPjxkZWZzPjxzdHlsZT4uY2xzLTF7ZmlsbDojZmZmO308L3N0eWxlPjwvZGVmcz48dGl0bGU+ZmFjZWJvb2s8L3RpdGxlPjxwYXRoIGNsYXNzPSJjbHMtMSIgZD0iTTg5LDguNjdIMTIuNGE0LDQsMCwwLDAtNC4xNCwzLjcyVjg5LjI4QTQsNCwwLDAsMCwxMi40LDkzSDUzLjI4VjU3SDQ1LjE0VjQzaDguMTRWMzMuOWMwLTYuOCw1LjczLTEzLDE0LjU5LTEzSDgxLjIxdjE0SDcyLjA2Yy0xLjc3LDAtMi40OS4yNS0yLjQ5LDIuMTF2Nkg4MC4zOGwtLjg2LDE0aC0xMFY5M0g4OWEzLjU3LDMuNTcsMCwwLDAsMy41OS0zLjcyVjEyLjM5QTMuNTYsMy41NiwwLDAsMCw4OSw4LjY3WiIvPjwvc3ZnPg==);
+    --twitter-svg  : url(data:image/svg+xml;base64,PHN2ZyBpZD0i44Os44Kk44Ok44O8XzEiIGRhdGEtbmFtZT0i44Os44Kk44Ok44O8IDEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgdmlld0JveD0iMCAwIDEwMCAxMDAiPjxkZWZzPjxzdHlsZT4uY2xzLTF7ZmlsbDojZmZmO308L3N0eWxlPjwvZGVmcz48dGl0bGU+dHdpdHRlcjwvdGl0bGU+PHBhdGggY2xhc3M9ImNscy0xIiBkPSJNODcuMTUsMzEuODNjMCwuMjgsMCwuNTcsMCwuODVzMCwuNzUsMCwxLjEyYy0uMzksOS4zNC0zLjU2LDMyLjIzLTI0LjI1LDQ2LTkuMTEsNi4wNy0xOS41MSw3LjQtMjcuNDgsNy41N2E0OS42OSw0OS42OSwwLDAsMS0yOC45NS04LjNjMTAuMTQuNzgsMTguMDUtMS44OCwyNi44My03LjY0LTEzLjYyLS43My0xNy4zOS0xMy4yNi0xNy4zOS0xMy4yNmEyMi4yNiwyMi4yNiwwLDAsMCw3LjY1LDBDOSw1NC4xNiw5LDM5LjkzLDksMzkuOTNhNjUuMTUsNjUuMTUsMCwwLDAsOC43NywyLjVjLTEzLjUxLTEwLjc0LTYtMjQuNjMtNi0yNC42M0MyMS42NSwyOC44NywzMy4wNSwzNS4wOSw0OS45MSwzN0ExOC44NywxOC44NywwLDAsMSw4MiwxOS42N2M3LjMyLTEuMzQsMTEuMjctNC41MiwxMS4yNy00LjUyQTE3Ljg5LDE3Ljg5LDAsMCwxLDg1LjksMjUuNTRhMjUuMzUsMjUuMzUsMCwwLDAsOS42LTIuNjNBMTcuODIsMTcuODIsMCwwLDEsODcuMTUsMzEuODNaIi8+PC9zdmc+);
+    --insta-svg    : url(data:image/svg+xml;base64,PHN2ZyBpZD0i44Os44Kk44Ok44O8XzEiIGRhdGEtbmFtZT0i44Os44Kk44Ok44O8IDEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgdmlld0JveD0iMCAwIDEwMCAxMDAiPjxkZWZzPjxzdHlsZT4uY2xzLTF7ZmlsbDojZmZmO2ZpbGwtcnVsZTpldmVub2RkO308L3N0eWxlPjwvZGVmcz48dGl0bGU+aW5zdGFncmFtPC90aXRsZT48cGF0aCBjbGFzcz0iY2xzLTEiIGQ9Ik01MS4zMiwxMy44OGMxMC4xNiwwLDExLjQzLDAsMTUuNDIuMjNhMjcuNTcsMjcuNTcsMCwwLDEsOS4wOCwxLjczLDE4LjQ3LDE4LjQ3LDAsMCwxLDYuNjIsNC4zMiwxOC4yMiwxOC4yMiwwLDAsMSw0LjMxLDYuNjIsMjcuMjksMjcuMjksMCwwLDEsMS43NCw5LjA4Yy4xOCw0LC4yMyw1LjI2LjIzLDE1LjQxczAsMTEuNDMtLjIzLDE1LjQyYTI3LjI5LDI3LjI5LDAsMCwxLTEuNzQsOS4wOEExOS4xLDE5LjEsMCwwLDEsNzUuODIsODYuN2EyNy4yOSwyNy4yOSwwLDAsMS05LjA4LDEuNzRjLTQsLjE4LTUuMjYuMjMtMTUuNDIuMjNzLTExLjQzLDAtMTUuNDItLjIzYTI3LjIyLDI3LjIyLDAsMCwxLTkuMDctMS43NCwxOC4xNCwxOC4xNCwwLDAsMS02LjYyLTQuMzEsMTguMzgsMTguMzgsMCwwLDEtNC4zMi02LjYyLDI3LjgsMjcuOCwwLDAsMS0xLjc0LTkuMDhjLS4xOC00LS4yMi01LjI2LS4yMi0xNS40MnMwLTExLjQyLjIyLTE1LjQxYTI3LjgsMjcuOCwwLDAsMSwxLjc0LTkuMDhBMTkuMjEsMTkuMjEsMCwwLDEsMjYuODMsMTUuODRhMjcuNSwyNy41LDAsMCwxLDkuMDctMS43M2M0LS4xOSw1LjI3LS4yMywxNS40Mi0uMjNabTAsNi43NGMtMTAsMC0xMS4xNywwLTE1LjExLjIyYTIwLjY1LDIwLjY1LDAsMCwwLTYuOTQsMS4yOCwxMi40MSwxMi40MSwwLDAsMC03LjEsNy4xLDIwLjg1LDIwLjg1LDAsMCwwLTEuMjksNi45NGMtLjE4LDQtLjIxLDUuMTMtLjIxLDE1LjExczAsMTEuMTcuMjEsMTUuMTFhMjAuODYsMjAuODYsMCwwLDAsMS4yOSw3LDExLjY1LDExLjY1LDAsMCwwLDIuOCw0LjMsMTEuNDMsMTEuNDMsMCwwLDAsNC4zLDIuNzksMjAuNTksMjAuNTksMCwwLDAsNi45NCwxLjI5YzMuOTQuMTgsNS4xMy4yMiwxNS4xMS4yMnMxMS4xNywwLDE1LjExLS4yMmEyMC42LDIwLjYsMCwwLDAsNi45NS0xLjI5LDExLjM5LDExLjM5LDAsMCwwLDQuMjktMi43OSwxMS42NSwxMS42NSwwLDAsMCwyLjgtNC4zLDIwLjg2LDIwLjg2LDAsMCwwLDEuMjktN2MuMTgtMy45NC4yMi01LjEyLjIyLTE1LjExczAtMTEuMTYtLjIyLTE1LjExYTIwLjg1LDIwLjg1LDAsMCwwLTEuMjktNi45NCwxMS42NSwxMS42NSwwLDAsMC0yLjgtNC4zLDExLjUzLDExLjUzLDAsMCwwLTQuMjktMi44LDIwLjY3LDIwLjY3LDAsMCwwLTYuOTUtMS4yOGMtMy45NC0uMTgtNS4xMi0uMjItMTUuMTEtLjIyWm0wLDExLjQ1YTE5LjIxLDE5LjIxLDAsMSwxLTE5LjIsMTkuMiwxOS4yLDE5LjIsMCwwLDEsMTkuMi0xOS4yWm0wLDMxLjY3QTEyLjQ3LDEyLjQ3LDAsMSwwLDM4Ljg2LDUxLjI3LDEyLjQ3LDEyLjQ3LDAsMCwwLDUxLjMyLDYzLjc0Wk03NS43NywzMS4zMWE0LjQ5LDQuNDksMCwxLDEtNC40OS00LjQ4LDQuNDksNC40OSwwLDAsMSw0LjQ5LDQuNDhaIi8+PC9zdmc+);
+    --wechat-svg   : url(data:image/svg+xml;base64,PHN2ZyBpZD0i44Os44Kk44Ok44O8XzEiIGRhdGEtbmFtZT0i44Os44Kk44Ok44O8IDEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgdmlld0JveD0iMCAwIDEwMCAxMDAiPjxkZWZzPjxzdHlsZT4uY2xzLTF7ZmlsbDojZmZmO308L3N0eWxlPjwvZGVmcz48dGl0bGU+d2VjaGF0PC90aXRsZT48cGF0aCBjbGFzcz0iY2xzLTEiIGQ9Ik01NS42OCw1NGEyLjU0LDIuNTQsMCwxLDAsMi41NCwyLjY1QTIuNTgsMi41OCwwLDAsMCw1NS42OCw1NFoiLz48cGF0aCBjbGFzcz0iY2xzLTEiIGQ9Ik01MCw0MC41YTMsMywwLDEsMC0uMDgtNi4wOSwzLjE0LDMuMTQsMCwwLDAtMy4wNywzLjA5QTMuMDcsMy4wNywwLDAsMCw1MCw0MC41WiIvPjxwYXRoIGNsYXNzPSJjbHMtMSIgZD0iTTMwLjUzLDM0LjQxYTMsMywwLDEsMC0uMTksNi4wOCwzLjEsMy4xLDAsMCwwLDMuMjEtMi45NEEzLjE0LDMuMTQsMCwwLDAsMzAuNTMsMzQuNDFaIi8+PHBhdGggY2xhc3M9ImNscy0xIiBkPSJNNzEuNSw1NEEyLjU0LDIuNTQsMCwwLDAsNjksNTYuMzhhMi41LDIuNSwwLDEsMCw1LC4yMkEyLjUzLDIuNTMsMCwwLDAsNzEuNSw1NFoiLz48cGF0aCBjbGFzcz0iY2xzLTEiIGQ9Ik04MC4xNyw4LjgzSDIxLjA2QTEyLjY2LDEyLjY2LDAsMCwwLDguNCwyMS41VjgwLjZBMTIuNjYsMTIuNjYsMCwwLDAsMjEuMDYsOTMuMjdIODAuMTdBMTIuNjYsMTIuNjYsMCwwLDAsOTIuODMsODAuNlYyMS41QTEyLjY2LDEyLjY2LDAsMCwwLDgwLjE3LDguODNaTTMzLjM2LDY0LjE3YTQuNzQsNC43NCwwLDAsMC0yLjU2LjQzYy0yLjM3LDEuMzQtNC42NCwyLjg1LTcuMzMsNC41My40OS0yLjIzLjgxLTQuMTksMS4zOC02LjA3QTIuMzEsMi4zMSwwLDAsMCwyMy44LDYwYy04LjE4LTUuNzgtMTEuNjMtMTQuNDItOS0yMy4zMkMxNy4xNCwyOC40NiwyMywyMy40NiwzMSwyMC44NmMxMC44Ny0zLjU1LDIzLjA5LjA3LDI5LjcsOC43YTIwLjI5LDIwLjI5LDAsMCwxLDQuMjQsMTAuNzZjLTYuODEuMzYtMTIuNzQsMi40Mi0xNy41NSw3LjA5YTIwLjg1LDIwLjg1LDAsMCwwLTYuNDcsMTcuNjZDMzguMjIsNjQuNzQsMzUuOCw2NC4zOCwzMy4zNiw2NC4xN1ptNDgsMTEuMThjLTIuMSwxLjg3LTIuODYsMy40LTEuNTEsNS44NmE2LjY4LDYuNjgsMCwwLDEsLjQyLDEuNmMtMi4xNS0xLTQuMTMtMi40LTYuMjQtMi42MnMtNC4zMSwxLTYuNSwxLjIxYTIxLjcyLDIxLjcyLDAsMCwxLTE3LjYzLTUuNzVjLTkuNC04LjY5LTguMDYtMjIsMi44Mi0yOS4xNSw5LjY2LTYuMzMsMjMuODQtNC4yMiwzMC42NSw0LjU3Qzg5LjI3LDU4LjczLDg4LjU3LDY4LjkxLDgxLjMxLDc1LjM1WiIvPjwvc3ZnPg==);
+
+}
+
+base{
+    display:block;
+    height:1px;
+    width:100%;
+    padding:0 1.5em;
+}base::after{
+    content:"";
+    width:100%;
+    height:1px;
+    display:block;
+    border-bottom:1px dashed #ccc;
+}
+
+.width100{width:100%;}
+
+.red-text{color:#c1272d !important;}
+
+/*
+div#edit-slug-box.hide-if-no-js{display:none !important;}
+*/
+
+#admin-set .left-section{
+    width:100%;
+}
+#admin-set .right-section{
+    width:0%;
+    padding:0;
+}
+
+#admin-set .right-section img{
+    max-width:100%;
+    opacity: 0.6;
+}
+
+#admin-set h1,#admin-set h2,#admin-set h3,#admin-set h4,#admin-set h5,#admin-set h6,#admin-set p{
+    color:#444;
+}
+
+#admin-set h2,#admin-set h3,#admin-set h4,#admin-set h5,#admin-set h6,#admin-set p{
+    line-height:1.4em;
+}
+
+
+
+#admin-set *{
+    box-sizing: border-box;
+}
+
+
+#admin-set .component,#admin-set .component-set{
+    width:96%;
+    margin:15px auto;
+    padding:0.3em 0;
+}
+
+#admin-set h4{
+    margin:1em 0 0.3em 0;
+    color:#333;
+    background:#FFF;
+    padding:0.3em 0.5em;
+    border-bottom:1px solid #c5c5c5;
+    height:1.8em;
+    width:100%;
+}
+#admin-set .component h5{
+    margin:0 0 0.1em 0;
+}
+
+input.readonly, input[readonly], textarea.readonly, textarea[readonly]{
+    background:#FFF;
+}
+
+
+span.example{
+    color:#777;
+    font-size:11px;
+    line-height: 1em;
+    display: block;
+    margin-bottom:0.6em;
+}
+
+
+    #admin-set h1{
+        font-size:30px;
+        text-align:center;
+        line-height:2em;
+    }
+    #admin-set h2{
+        font-size:24px;
+    }
+    #admin-set h3{
+        font-size:20px;
+    }
+    #admin-set h4{
+        font-size:16px;
+    }
+    #admin-set h5{
+        font-size:14px;
+    }
+    #admin-set h6{
+        font-size:12px;
+    }
+    #admin-set p{
+        font-size:16px;text-align:justify;
+    }
+
+
+
+
+
+
+
+
+
+
+#admin-set label{
+    color:#444;
+    line-height:1.6em;
+    font-size:16px;
+}
+
+#admin-set label:hover{
+    cursor: pointer;
+}
+
+/* button
+************/
+#admin-set .btn{
+    display:inline-block;
+    background-color:var(--mono-color-light);
+    text-align: center;
+    vertical-align:bottom;
+    padding:0.7em 1em;
+    color:#FFF;
+    width:100%;
+    border-radius:0.4em;
+    font-size:15px;
+}
+
+#admin-set .btn-white{
+    display:inline-block;
+    border:1px solid var(--mono-color-light);
+    text-align: center;
+    vertical-align:bottom;
+    padding:0.7em 1em;
+    color:var(--mono-color-light);
+    width:100%;
+    border-radius:0.4em;
+    font-size:15px;
+}
+
+#admin-set .icon-facebook::before{
+    background: var(--facebook-svg);
+    background-position:50% 050%;
+    background-repeat:  no-repeat;
+    background-origin: content-box;
+    height: 1.2em;
+    vertical-align: middle;
+    background-size:100%;
+    display: inline-block;
+    width: 1.2em;
+    content: '';
+    margin-right:0.6em;
+}
+
+#admin-set .icon-twitter::before{
+    background: var(--twitter-svg);
+    background-position:50% 050%;
+    background-repeat:  no-repeat;
+    background-origin: content-box;
+    content: '';
+    display: inline-block;
+    width: 1.2em;
+    height: 1.2em;
+    vertical-align: middle;
+    background-size:100%;
+    margin-right:0.6em;
+}
+
+#admin-set .icon-insta::before{
+    background: var(--insta-svg);
+    background-position:50% 050%;
+    background-repeat:  no-repeat;
+    background-origin: content-box;
+    content: '';
+    display: inline-block;
+    width: 1.2em;
+    height: 1.2em;
+    vertical-align: middle;
+    background-size:100%;
+    margin-right:0.6em;
+}
+
+#admin-set .icon-weibo::before{
+    background: var(--weibo-svg);
+    background-position:50% 050%;
+    background-repeat:  no-repeat;
+    background-origin: content-box;
+    content: '';
+    display: inline-block;
+    width: 1.2em;
+    height: 1.2em;
+    vertical-align: middle;
+    background-size:100%;
+    margin-right:0.6em;
+
+}
+
+#admin-set .icon-wechat::before{
+    background: var(--wechat-svg);
+    background-position:50% 050%;
+    background-repeat:  no-repeat;
+    background-origin: content-box;
+    content: '';
+    display: inline-block;
+    width: 1.2em;
+    height: 1.2em;
+    vertical-align: middle;
+    background-size:100%;
+    margin-right:0.6em;
+}
+
+#admin-set input,#admin-set select,#admin-set textarea{
+    color:var(--mono-color-light);
+    border:1px solid var(--mono-color-lightness);
+    border-radius:0.4em;
+    display:block;
+    padding:0.5em;
+    width:100%;
+    font-size:16px;
+}
+
+:placeholder-shown {          color: var(--mono-color-lightness); }
+::-webkit-input-placeholder { color: var(--mono-color-lightness); }
+:-moz-placeholder {           color: var(--mono-color-lightness); opacity: 1; }
+::-moz-placeholder {          color: var(--mono-color-lightness); opacity: 1; }
+:-ms-input-placeholder {      color: var(--mono-color-lightness); }
+
+#admin-set input[type="button"]{
+    color:var(--mono-color-light);
+    border:1px solid var(--mono-color-lightness);
+    border-radius:0.4em;
+    display:block;
+    padding: 0.3em;
+    width: 100%;
+    font-size: 14px;
+    margin: 0.4em auto;
+}
+
+
+
+
+
+
+.pict-list > div{
+    width:33%;
+    padding:2em 1em;
+}
+.pict-list > div img{
+    max-width:100%;
+}
+
+
+
+
+
+
+
+#admin-set .flex-set-3 > div > div.view,
+#admin-set .flex-set-2 > div > div.view{
+    width:100%;
+    min-height:100px;
+    background:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAB4AAAAAyCAMAAACK2TYEAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAC1QTFRF1tbazMzR3d3hzs7T4ODj5OTo8fHz4uLl7Ozu29vf09PY2Njc7u7x0dHW8/P1h8pIpgAAATtJREFUeNrs3TkKwzAQQFFtXrPc/7hBSRNsQ9JIJuS9woXKAfFR4wl3AKC7YAQAIMAAIMAAgAADgAADAAIMAAIMAAgwAAgwACDAACDAACDAAIAAA4AAAycqYSeZCggw0FaKB4q5gAADbW9tzNsHcI6uMggw0DrA4YsjQIABAQYEGAQYEGBAgEGAAQEGBBgQYBBgQIABAQYBFmAQYOCsAI9JgEGAgZ4BnutnjZMAgwAD/QJ8zcvrt9CzAIMAA70CPK4xDkNdw3AbBRgEGOgU4KW2Nz8XIV0EGAQY6BPg4X0V4STAIMBAnxfwxyNAgAEBBgQYfj/AOWxkAQYBBhor8UAyFxBgoK0UdoqpgAADAAIMAAIMAAgwAAgwAAgwACDAACDAAIAAA4AAAwACDAACDAAIMAAIMAD8l4cAAwDLHXU3xcHqAwAAAABJRU5ErkJggg==) 50% 50% no-repeat;
+}
+
+#admin-set #barcode > .view{
+    width:100%;
+    min-height:100px;
+    background:url(../images/barcode.svg) 50% 50% no-repeat;
+}
+
+
+[id^="pict-"] > *,
+[id^="barcode"] > *{  
+    -webkit-align-items: flex-start; align-items: flex-start;
+}
+
+[id^="pict-"] .view,
+[id^="pict-"] .view + p,
+[id^="barcode"] .view,
+[id^="barcode"] .view + p{
+    width:100%;
+
+}
+
+
+
+[id^="coupon_"]{
+    padding:0.5em;
+}
+[id^="coupon_"] .view img{
+    width: 100%;
+}
+
+
+#admin-set input[type="button"].media,#admin-set input[type="button"].media-clear{
+    width:48%;
+    height:2.2em;
+}
+
+
+
+
+#admin-set textarea{
+
+    resize: vertical;
+    height:auto;
+}
+
+
+#admin-set .select::after,#admin-set .select-half::after{
+    /*content: '\02228';*/
+    display: inline-block;
+    width: 1.2em;
+    height: 1.2em;
+    position:relative;
+    top:-1.6em;
+    right:0.5em;
+    left:calc(100% - 1.5em);
+    color:var(--mono-color-light);
+}
+
+
+
+#admin-set .component.select,#admin-set .component.select-split{
+    padding-bottom:0 !important;
+}
+
+#admin-set .flex-half{
+    display: -webkit-flex; display: -ms-flexbox; display: flex;
+    -ms-flex-flow:row nowrap;flex-flow:row nowrap;
+    -webkit-justify-content: space-between;-ms-flex-pack:justify;justify-content: space-between;
+    -webkit-align-items: center;  -ms-flex-align: center; align-items: center;
+}
+#admin-set .flex-half > *{
+    width:49%;
+}
+
+
+
+
+
+
+#admin-set .flex-set-3,#admin-set .flex-set-2{
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-flow:row nowrap;
+    flex-flow:row nowrap;
+    -webkit-justify-content: space-between;-ms-flex-pack: justify; justify-content: space-between;
+}
+#admin-set .flex-set-3 > div{
+    width:32%;
+}
+#admin-set .flex-set-2 > div{
+    width:48%;
+}
+
+
+#admin-set .flex-set-3 > div img,
+#admin-set .flex-set-2 > div img{
+    width:100%;
+    height:auto;
+    object-fit: cover;
+}
+
+
+
+
+
+
+
+
+
+
+input#product_prefecture{
+    background-position:1% 50%;
+    padding-left:3em;
+}
+
+#est47-overlay{z-index:999;}
+
+
+
+/* ラジオボタン,チェックボックス
+*********************************************************************************/
+#admin-set .radio-set input[type="radio"],
+#admin-set .checkbox-set input[type="checkbox"]{
+    display:none !important;
+}
+
+#admin-set .radio-set label{
+    display:block;
+    padding:0.5em 1em;
+    color:#b90083;
+    border:1px solid #b90083;
+    transition: all 0.2s ease;
+    width:100%;
+    text-align:center;
+    margin:0 1px;
+    font-size:1vw;
+}
+
+#admin-set .checkbox-set label{
+    display:block;
+    padding:0.5em 1em;
+    color:#c1272d;
+    border:1px solid #c1272d;
+    transition: all 0.2s ease;
+    width:100%;
+    text-align:center;
+    margin:2px;
+    font-size:1vw;
+}
+
+
+#admin-set .radio-set label:hover{
+    cursor: pointer;
+    background:var(--mono-color-lightness);
+}
+#admin-set .checkbox-set label:hover{
+    cursor: pointer;
+    background:var(--mono-color-lightness);
+}
+
+
+/*選択されているタブのスタイルを変える*/
+#admin-set .radio-set input:checked + .radio_item {
+    background-color: #b90083;
+    color: #fff !important;
+}
+/*選択されているタブのスタイルを変える*/
+#admin-set .checkbox-set input:checked + .checkbox_item {
+    background-color: #b90083;
+    color: #fff !important;
+}
+
+.split-2 > *{    width:49.5% !important;}
+.split-3 > *{    width:31.5% !important;}
+.split-4 > *{    width:23.5% !important;}
+.split-5 > *{    width:19% !important;}
+.split-6 > *{    width:16% !important;}
+.split-7 > *{    width:13.3% !important;}
+.split-8 > *{    width:11.8% !important;}
+.split-9 > *{    width:10% !important;}
+.split-10 > *{   width:9.6% !important;}
+
+/* チェックボックスセット
+*********************************************************************************/
+
+
+
+
+
+
+
+
+/*
+共通コンポーネント
+***********************/
+.full{
+    width:100%;
+}
+
+.center{text-align:center;}
+
+.no-border{border:none !important;}
+.no-padding{padding:0 !important;}
+.no-margin{margin:0 !important;}
+
+.padding-top5{padding-top:5px !important;}
+.padding-top10{padding-top:10px !important;}
+.padding-top15{padding-top:15px !important;}
+.padding-top20{padding-top:20px !important;}
+.padding-top25{padding-top:25px !important;}
+.padding-top30{padding-top:30px !important;}
+.padding-top35{padding-top:35px !important;}
+.padding-top40{padding-top:40px !important;}
+.padding-top45{padding-top:45px !important;}
+.padding-top50{padding-top:50px !important;}
+.padding-bottom5{padding-bottom:5px !important;}
+.padding-bottom10{padding-bottom:10px !important;}
+.padding-bottom15{padding-bottom:15px !important;}
+.padding-bottom20{padding-bottom:20px !important;}
+.padding-bottom25{padding-bottom:25px !important;}
+.padding-bottom30{padding-bottom:30px !important;}
+.padding-bottom35{padding-bottom:35px !important;}
+.padding-bottom40{padding-bottom:40px !important;}
+.padding-bottom45{padding-bottom:45px !important;}
+.padding-bottom50{padding-bottom:50px !important;}
+.margin-top5{margin-top:5px !important;}
+.margin-top10{margin-top:10px !important;}
+.margin-top15{margin-top:15px !important;}
+.margin-top20{margin-top:20px !important;}
+.margin-top25{margin-top:25px !important;}
+.margin-top30{margin-top:30px !important;}
+.margin-top35{margin-top:35px !important;}
+.margin-top40{margin-top:40px !important;}
+.margin-top45{margin-top:45px !important;}
+.margin-top50{margin-top:50px !important;}
+.margin-bottom5{margin-bottom:5px !important;}
+.margin-bottom10{margin-bottom:10px !important;}
+.margin-bottom15{margin-bottom:15px !important;}
+.margin-bottom20{margin-bottom:20px !important;}
+.margin-bottom25{margin-bottom:25px !important;}
+.margin-bottom30{margin-bottom:30px !important;}
+.margin-bottom35{margin-bottom:35px !important;}
+.margin-bottom40{margin-bottom:40px !important;}
+.margin-bottom45{margin-bottom:45px !important;}
+.margin-bottom50{margin-bottom:50px !important;}
+
+#admin-set .width-5{width:5% !important;}
+#admin-set .width-10{width:10% !important;}
+#admin-set .width-15{width:15% !important;}
+#admin-set .width-20{width:20% !important;}
+#admin-set .width-25{width:25% !important;}
+#admin-set .width-30{width:30% !important;}
+#admin-set .width-35{width:35% !important;}
+#admin-set .width-40{width:40% !important;}
+#admin-set .width-45{width:45% !important;}
+#admin-set .width-50{width:50% !important;}
+#admin-set .width-55{width:55% !important;}
+#admin-set .width-60{width:60% !important;}
+#admin-set .width-65{width:65% !important;}
+#admin-set .width-70{width:70% !important;}
+#admin-set .width-75{width:75% !important;}
+#admin-set .width-80{width:80% !important;}
+#admin-set .width-85{width:85% !important;}
+#admin-set .width-90{width:90% !important;}
+#admin-set .width-95{width:95% !important;}
+#admin-set .width-100{width:100% !important;}
+
+#admin-set .component-set .component{padding:0 10px;}
+#admin-set .flex-split-2 > .component{width:calc(100% / 2);}
+#admin-set .flex-split-3 > .component{width:calc(100% / 3);}
+#admin-set .flex-split-4 > .component{width:calc(100% / 4);}
+#admin-set .flex-split-5 > .component{width:calc(100% / 5);}
+#admin-set .flex-split-6 > .component{width:calc(100% / 6);}
+#admin-set .flex-split-7 > .component{width:calc(100% / 7);}
+#admin-set .flex-split-8 > .component{width:calc(100% / 8);}
+#admin-set .flex-split-9 > .component{width:calc(100% / 9);}
+
+
+
+/*選択されているタブのコンテンツのみを表示
+#all:checked ~ #all_content,
+#programming:checked ~ #programming_content,
+#design:checked ~ #design_content {
+display: block;
+}
+*/
+
+
+
+/*タブ切り替え全体のスタイル*/
+.tabs {margin-top: 50px;padding-bottom: 1em;background-color: #fff;margin: 0 auto;}
+/*タブのスタイル*/
+label .tab_item {height: auto;border-bottom: 1px solid #b90083;background-color: #FFF;line-height: 2.5em;
+    font-size: 14px;text-align: center;color: #444;display: block;text-align: center;transition: all 0.2s ease;
+    float: left;
+}
+label.tab_item:hover{background:#d8bfd8;cursor: pointer;}
+
+.tab-split-2,
+.tab-split-3,
+.tab-split-4,
+.tab-split-5,
+.tab-split-6,
+.tab-split-7,
+.tab-split-8{
+    display: -webkit-flex; display: -ms-flexbox; display: flex;
+    -ms-flex-flow:row wrap; flex-flow:row wrap;
+    -webkit-justify-content: space-between;-ms-flex-pack: justify; justify-content: space-between;
+}
+
+
+.tab-split-3 > [class^="tab_item"]{ width: calc( 100% / 3 ); }
+.tab-split-4 > [class^="tab_item"]{ width: calc( 100% / 4 ); }
+.tab-split-5 > [class^="tab_item"]{ width: calc( 100% / 5 ); }
+.tab-split-6 > [class^="tab_item"]{ width: calc( 100% / 6 ); }
+.tab-split-7 > [class^="tab_item"]{ width: calc( 100% / 7 ); }
+.tab-split-8 > [class^="tab_item"]{ width: calc( 100% / 8 ); }
+
+.tab-split-6 > [class^="tab_content"]{width:100%;}
+
+/*ラジオボタンを全て消す*/
+input[name^="tab_item"] { display: none !important; }
+
+.tabs label{text-align:center;display:block;border-bottom:1px solid #333;}
+
+/*選択されているタブのスタイルを変える*/
+.tabs input:checked + .tab_item { background-color: #b90083; color: #fff !important; }
+
+.tabs .tab_content { display: none; padding: 1em 3px;
+    clear: both;
+    overflow: hidden;
+}
+
+
+
+
+
+
+
+
+#admin-set .tabs #label-caption-jp:checked ~ #item-caption-jp,
+#admin-set .tabs #label-caption-en:checked ~ #item-caption-en,
+#admin-set .tabs #label-caption-cn:checked ~ #item-caption-cn,
+#admin-set .tabs #label-caption-tc:checked ~ #item-caption-tc,
+#admin-set .tabs #label-caption-ko:checked ~ #item-caption-ko,
+#admin-set .tabs #label-caption-th:checked ~ #item-caption-th,
+
+#admin-set .tabs #label-desc-jp:checked ~ #item-desc-jp,
+#admin-set .tabs #label-desc-en:checked ~ #item-desc-en,
+#admin-set .tabs #label-desc-cn:checked ~ #item-desc-cn,
+#admin-set .tabs #label-desc-tc:checked ~ #item-desc-tc,
+#admin-set .tabs #label-desc-ko:checked ~ #item-desc-ko,
+#admin-set .tabs #label-desc-th:checked ~ #item-desc-th,
+
+
+
+#admin-set .tabs #label-holiday-jp:checked ~ #item-holiday-jp,
+#admin-set .tabs #label-holiday-en:checked ~ #item-holiday-en,
+#admin-set .tabs #label-holiday-cn:checked ~ #item-holiday-cn,
+#admin-set .tabs #label-holiday-tc:checked ~ #item-holiday-tc,
+#admin-set .tabs #label-holiday-ko:checked ~ #item-holiday-ko,
+#admin-set .tabs #label-holiday-th:checked ~ #item-holiday-th,
+
+#admin-set .tabs #label-traffic-jp:checked ~ #item-traffic-jp,
+#admin-set .tabs #label-traffic-en:checked ~ #item-traffic-en,
+#admin-set .tabs #label-traffic-cn:checked ~ #item-traffic-cn,
+#admin-set .tabs #label-traffic-tc:checked ~ #item-traffic-tc,
+#admin-set .tabs #label-traffic-ko:checked ~ #item-traffic-ko,
+#admin-set .tabs #label-traffic-th:checked ~ #item-traffic-th,
+
+#admin-set .tabs #label-open-jp:checked ~ #item-open-jp,
+#admin-set .tabs #label-open-en:checked ~ #item-open-en,
+#admin-set .tabs #label-open-cn:checked ~ #item-open-cn,
+#admin-set .tabs #label-open-tc:checked ~ #item-open-tc,
+#admin-set .tabs #label-open-ko:checked ~ #item-open-ko,
+#admin-set .tabs #label-open-th:checked ~ #item-open-th,
+
+#admin-set .tabs #label-notes-jp:checked ~ #item-notes-jp,
+#admin-set .tabs #label-notes-en:checked ~ #item-notes-en,
+#admin-set .tabs #label-notes-cn:checked ~ #item-notes-cn,
+#admin-set .tabs #label-notes-tc:checked ~ #item-notes-tc,
+#admin-set .tabs #label-notes-ko:checked ~ #item-notes-ko,
+#admin-set .tabs #label-notes-th:checked ~ #item-notes-th,
+
+#admin-set .tabs #label-couponname-jp:checked ~ #item-couponname-jp,
+#admin-set .tabs #label-couponname-en:checked ~ #item-couponname-en,
+#admin-set .tabs #label-couponname-cn:checked ~ #item-couponname-cn,
+#admin-set .tabs #label-couponname-tc:checked ~ #item-couponname-tc,
+#admin-set .tabs #label-couponname-ko:checked ~ #item-couponname-ko,
+#admin-set .tabs #label-couponname-th:checked ~ #item-couponname-th,
+
+#admin-set .tabs #label-display-jp:checked ~ #item-display-jp,
+#admin-set .tabs #label-display-en:checked ~ #item-display-en,
+#admin-set .tabs #label-display-cn:checked ~ #item-display-cn,
+#admin-set .tabs #label-display-tc:checked ~ #item-display-tc,
+#admin-set .tabs #label-display-ko:checked ~ #item-display-ko,
+#admin-set .tabs #label-display-th:checked ~ #item-display-th,
+
+#admin-set .tabs #label-contact-jp:checked ~ #item-contact-jp,
+#admin-set .tabs #label-contact-en:checked ~ #item-contact-en,
+#admin-set .tabs #label-contact-cn:checked ~ #item-contact-cn,
+#admin-set .tabs #label-contact-tc:checked ~ #item-contact-tc,
+#admin-set .tabs #label-contact-ko:checked ~ #item-contact-ko,
+#admin-set .tabs #label-contact-th:checked ~ #item-contact-th,
+
+#admin-set .tabs #label-provider-jp:checked ~ #item-provider-jp,
+#admin-set .tabs #label-provider-en:checked ~ #item-provider-en,
+#admin-set .tabs #label-provider-cn:checked ~ #item-provider-cn,
+#admin-set .tabs #label-provider-tc:checked ~ #item-provider-tc,
+#admin-set .tabs #label-provider-ko:checked ~ #item-provider-ko,
+#admin-set .tabs #label-provider-th:checked ~ #item-provider-th,
+
+#admin-set .tabs #label-caption-jp:checked ~ #item-caption-jp,
+#admin-set .tabs #label-caption-en:checked ~ #item-caption-en,
+#admin-set .tabs #label-caption-cn:checked ~ #item-caption-cn,
+#admin-set .tabs #label-caption-tc:checked ~ #item-caption-tc,
+#admin-set .tabs #label-caption-ko:checked ~ #item-caption-ko,
+#admin-set .tabs #label-caption-th:checked ~ #item-caption-th,
+
+#admin-set .tabs #label-requirement-jp:checked ~ #item-requirement-jp,
+#admin-set .tabs #label-requirement-en:checked ~ #item-requirement-en,
+#admin-set .tabs #label-requirement-cn:checked ~ #item-requirement-cn,
+#admin-set .tabs #label-requirement-tc:checked ~ #item-requirement-tc,
+#admin-set .tabs #label-requirement-ko:checked ~ #item-requirement-ko,
+#admin-set .tabs #label-requirement-th:checked ~ #item-requirement-th,
+
+
+#admin-set .tabs #label-coupon_notes-jp:checked ~ #item-coupon_notes-jp,
+#admin-set .tabs #label-coupon_notes-en:checked ~ #item-coupon_notes-en,
+#admin-set .tabs #label-coupon_notes-cn:checked ~ #item-coupon_notes-cn,
+#admin-set .tabs #label-coupon_notes-tc:checked ~ #item-coupon_notes-tc,
+#admin-set .tabs #label-coupon_notes-ko:checked ~ #item-coupon_notes-ko,
+#admin-set .tabs #label-coupon_notes-th:checked ~ #item-coupon_notes-th,
+
+
+
+
+
+
+#admin-set .tabs #label-productcatch-jp:checked ~ #item-productcatch-jp,
+#admin-set .tabs #label-productcatch-en:checked ~ #item-productcatch-en,
+#admin-set .tabs #label-productcatch-cn:checked ~ #item-productcatch-cn,
+#admin-set .tabs #label-productcatch-tc:checked ~ #item-productcatch-tc,
+#admin-set .tabs #label-productcatch-ko:checked ~ #item-productcatch-ko,
+#admin-set .tabs #label-productcatch-th:checked ~ #item-productcatch-th,
+
+
+
+#admin-set .tabs #label-productcity-jp:checked ~ #item-productcity-jp,
+#admin-set .tabs #label-productcity-en:checked ~ #item-productcity-en,
+#admin-set .tabs #label-productcity-cn:checked ~ #item-productcity-cn,
+#admin-set .tabs #label-productcity-tc:checked ~ #item-productcity-tc,
+#admin-set .tabs #label-productcity-ko:checked ~ #item-productcity-ko,
+#admin-set .tabs #label-productcity-th:checked ~ #item-productcity-th,
+
+#admin-set .tabs #label-matchfood-jp:checked ~ #item-matchfood-jp,
+#admin-set .tabs #label-matchfood-en:checked ~ #item-matchfood-en,
+#admin-set .tabs #label-matchfood-cn:checked ~ #item-matchfood-cn,
+#admin-set .tabs #label-matchfood-tc:checked ~ #item-matchfood-tc,
+#admin-set .tabs #label-matchfood-ko:checked ~ #item-matchfood-ko,
+#admin-set .tabs #label-matchfood-th:checked ~ #item-matchfood-th
+{
+display: block;
+}
+
+
+
+/***************
+酒造所登録フォーム用
+***************/
+.tabs .tab_content {
+    display: none;
+}
+#admin-set .tabs #label-breweryname-jp:checked ~ #item-breweryname-jp,
+#admin-set .tabs #label-breweryname-en:checked ~ #item-breweryname-en,
+#admin-set .tabs #label-breweryname-cn:checked ~ #item-breweryname-cn,
+#admin-set .tabs #label-breweryname-tc:checked ~ #item-breweryname-tc,
+#admin-set .tabs #label-breweryname-ko:checked ~ #item-breweryname-ko,
+#admin-set .tabs #label-breweryname-kana:checked ~ #item-breweryname-kana,
+#admin-set .tabs #label-breweryname-roma:checked ~ #item-breweryname-roma,
+#admin-set .tabs #label-breweryname-th:checked ~ #item-breweryname-th,
+
+#admin-set .tabs #label-brewerydesc-jp:checked ~ #item-brewerydesc-jp,
+#admin-set .tabs #label-brewerydesc-en:checked ~ #item-brewerydesc-en,
+#admin-set .tabs #label-brewerydesc-cn:checked ~ #item-brewerydesc-cn,
+#admin-set .tabs #label-brewerydesc-tc:checked ~ #item-brewerydesc-tc,
+#admin-set .tabs #label-brewerydesc-ko:checked ~ #item-brewerydesc-ko,
+#admin-set .tabs #label-brewerydesc-th:checked ~ #item-brewerydesc-th,
+
+
+
+#admin-set .tabs #label-tour-jp:checked ~ #item-tour-jp,
+#admin-set .tabs #label-tour-en:checked ~ #item-tour-en,
+#admin-set .tabs #label-tour-cn:checked ~ #item-tour-cn,
+#admin-set .tabs #label-tour-tc:checked ~ #item-tour-tc,
+#admin-set .tabs #label-tour-ko:checked ~ #item-tour-ko,
+#admin-set .tabs #label-tour-th:checked ~ #item-tour-th
+
+{
+display: block;
+}
+
+
+
+
+
+
+#wp-admin-bar-wp-logo,#wp-admin-bar-comments,#wp-admin-bar-new-post,#wpfooter{display:none !important;}
+
+

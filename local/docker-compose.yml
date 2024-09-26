@@ -1,0 +1,222 @@
+version: "3.8"
+
+services:
+
+  https-portal:
+    image: steveltn/https-portal:1
+    ports:
+        - 80:80
+        - ${HTTPS_PORT:-443}:443
+    networks:
+        - line-ec
+    restart: always
+    volumes:
+        - ./certs:/var/lib/https-portal
+        - ./settings/https-portal:/etc/nginx/conf.d
+    environment:
+        STAGE: 'local'
+        #FORCE_RENEW: 'true'
+        DOMAINS: 'line-admin.local -> http://nginx,
+                  line-aecadmin.local -> http://nginx,
+                  line-api.local -> http://nginx,
+                  line-b2b.wp.local -> http://nginx,
+                  line-b2b.local -> http://nginx,
+                  line-b2b.wp.local -> http://nginx,
+                  line-cdn.local -> http://nginx,
+                  line-dashboard.local -> http://nginx,
+                  line-ec.local -> http://nginx,
+                  line-info.local -> http://nginx,
+                  line-media.local -> http://nginx'
+        CLIENT_MAX_BODY_SIZE: 20M
+
+  nginx:
+    image: nginx
+    container_name: ${PROJECT_NAME}_nginx
+    restart: always
+    expose:
+      - 8000
+    volumes:
+    - ./docker/nginx/nginx.conf.d:/etc/nginx/conf.d/
+    - ../b2b.wp/DocumentRoot:/var/www/html/
+    networks:
+      - line-ec
+    depends_on:
+      - admin
+      - aecadmin
+      - api
+      - b2b
+      - b2b.wp
+      - dashboard
+      - ec
+      - info
+
+  admin:
+    container_name: ${PROJECT_NAME}_admin
+    build: ./docker/nuxt
+    volumes:
+      - ../admin/admin:/src
+      - node_modules_admin:/src/node_modules
+    working_dir: "/src"
+    expose:
+      - 9999
+    tty: true
+    environment:
+      - CHOKIDAR_USEPOLLING=true
+    networks:
+      - line-ec
+    depends_on:
+      - db
+
+  aecadmin:
+    container_name: ${PROJECT_NAME}_aecadmin
+    build: ./docker/nuxt
+    volumes:
+      - ../aecadmin:/src
+      - node_modules_aecadmin:/src/node_modules
+    working_dir: "/src"
+    expose:
+      - 3001
+    tty: true
+    environment:
+      - CHOKIDAR_USEPOLLING=true
+    networks:
+      - line-ec
+    depends_on:
+      - db
+
+  api:
+    container_name: ${PROJECT_NAME}_api
+    build: ./docker/nuxt
+    volumes:
+      - ../api:/src
+      - node_modules_api:/src/node_modules
+    working_dir: "/src"
+    expose:
+      - 3004
+    tty: true
+    environment:
+      - CHOKIDAR_USEPOLLING=true
+    networks:
+      - line-ec
+    depends_on:
+      - db
+
+  b2b:
+    container_name: ${PROJECT_NAME}_b2b
+    build: ./docker/nuxt
+    volumes:
+      - ../b2b:/src
+      - node_modules_b2b:/src/node_modules
+    working_dir: "/src"
+    expose:
+      - 5556
+    tty: true
+    environment:
+      - CHOKIDAR_USEPOLLING=true
+    networks:
+      - line-ec
+    depends_on:
+      - db
+
+  b2b.wp:
+    container_name: ${PROJECT_NAME}_b2b.wp
+    image: wordpress:5.7.2-php7.4-fpm
+    volumes:
+      - ../b2b.wp/DocumentRoot:/var/www/html/
+      - ./docker/php/php.ini:/usr/local/etc/php/php.ini
+    working_dir: "/var/www/html/"
+    expose:
+      - 8080
+    environment:
+      WORDPRESS_DB_HOST: ${WORDPRESS_DB_HOST:-root}
+      WORDPRESS_DB_NAME: ${WORDPRESS_DB_NAME:-hiyoshi_wp}
+      WORDPRESS_DB_USER: ${WORDPRESS_DB_USER:-wordpress}
+      WORDPRESS_DB_PASSWORD: ${WORDPRESS_DB_PASSWORD:-wordpress}
+    networks:
+      - line-ec
+    depends_on:
+      - db
+
+  dashboard:
+    container_name: ${PROJECT_NAME}_dashboard
+    build: ./docker/nuxt
+    volumes:
+      - ../dashboard:/src
+      - ../cdn:/src/cdn
+      - node_modules_dashboard:/src/node_modules
+    working_dir: "/src"
+    expose:
+      - 3003
+    tty: true
+    environment:
+      - CHOKIDAR_USEPOLLING=true
+    networks:
+      - line-ec
+    depends_on:
+      - db
+
+  ec:
+    container_name: ${PROJECT_NAME}_ec
+    build: ./docker/nuxt
+    volumes:
+      - ../ec:/src
+      - node_modules_ec:/src/node_modules
+    working_dir: "/src"
+    expose:
+      - 5656
+    tty: true
+    environment:
+      - CHOKIDAR_USEPOLLING=true
+    networks:
+      - line-ec
+    depends_on:
+      - db
+
+  info:
+    container_name: ${PROJECT_NAME}_info
+    build: ./docker/nuxt
+    volumes:
+      - ../info/info:/src
+      - node_modules_info:/src/node_modules
+    working_dir: "/src"
+    expose:
+      - 5000
+    tty: true
+    environment:
+      - CHOKIDAR_USEPOLLING=true
+    networks:
+      - line-ec
+    depends_on:
+      - db
+
+  db:
+    container_name: ${PROJECT_NAME}_mariadb
+    build: ./docker/mariadb
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: ${DATABASE_ROOT_PASS:-secret}
+      MYSQL_DATABASE: ${DATABASE_NAME:-admin}
+      MYSQL_USER: ${DATABASE_USER:-adop-line}
+      MYSQL_PASSWORD: ${DATABASE_PASSWORD:-secret}
+      TZ: 'Asia/Tokyo'
+    ports:
+      - ${DATABASE_port:-3306}:3306
+    volumes:
+      - lineec_db_data:/var/lib/mysql
+      - ./:/src
+    networks:
+      - line-ec
+
+volumes:
+  node_modules_admin:
+  node_modules_aecadmin:
+  node_modules_api:
+  node_modules_b2b:
+  node_modules_dashboard:
+  node_modules_ec:
+  node_modules_info:
+  lineec_db_data:
+
+networks:
+  line-ec:
+    driver: bridge

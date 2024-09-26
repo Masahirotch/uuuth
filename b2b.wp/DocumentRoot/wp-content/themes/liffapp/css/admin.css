@@ -1,0 +1,279 @@
+@charset "UTF-8";
+
+.app-box{
+width:92%;
+background:#FFF;
+padding:2em;
+}
+
+input::placeholder {
+  color: #ddd;
+}
+
+/* IE */
+input:-ms-input-placeholder {
+  color: #ddd;
+}
+
+/* Edge */
+input::-ms-input-placeholder {
+  color: #ddd;
+}
+
+.border-bottom{
+	padding-top:1em;
+	padding-bottom:1em;
+	border-bottom:1px dotted #ccc;
+}
+.padding-1em{padding:1em;}
+.padding-2em{padding:2em;}
+.padding-3em{padding:3em;}
+
+[class^="split"]{
+	display: -webkit-flex; display: -ms-flexbox; display: flex;
+	-ms-flex-flow:row nowrap; flex-flow:row nowrap;
+	-webkit-justify-content: space-between;-ms-flex-pack: justify; justify-content: space-between;
+	-webkit-align-items: stretch; -ms-flex-align:stretch; align-items: stretch;
+}
+
+[class^="split"].start{
+	-webkit-justify-content: center;-ms-flex-pack: center;justify-content: center;
+}
+
+.split > *  { width:calc(100% / 2); padding:0.5em;}
+.split-3 > *{ width:calc(100% / 3); padding:0.5em;}
+.split-4 > *{ width:calc(100% / 4); padding:0.5em;}
+.split-5 > *{ width:calc(100% / 5); padding:0.5em;}
+.split-6 > *{ width:calc(100% / 6); padding:0.5em;}
+.split-7 > *{ width:calc(100% / 7); padding:0.5em;}
+.split-8 > *{ width:calc(100% / 8); padding:0.5em;}
+.split-9 > *{ width:calc(100% / 9); padding:0.5em;}
+.split-10 > *{ width:calc(100% / 10); padding:0.5em;}
+
+.width10{width:10%;}
+.width20{width:20%;}
+.width30{width:30%;}
+.width40{width:40%;}
+.width50{width:50%;}
+.width60{width:60%;}
+.width70{width:70%;}
+.width80{width:80%;}
+.width90{width:90%;}
+.width100{width:100%;}
+
+.width15{width:15%;}
+.width25{width:25%;}
+.width35{width:35%;}
+.width45{width:45%;}
+.width55{width:55%;}
+.width65{width:65%;}
+.width75{width:75%;}
+.width85{width:85%;}
+.width95{width:95%;}
+
+.mt10{margin-top:10px;}
+.mt20{margin-top:20px;}
+.mt30{margin-top:30px;}
+.mt40{margin-top:40px;}
+.mt50{margin-top:50px;}
+.mt60{margin-top:60px;}
+.mt70{margin-top:70px;}
+.mt80{margin-top:80px;}
+.mt90{margin-top:90px;}
+.mt100{margin-top:100px;}
+
+.mb10{margin-bottom:10px;}
+.mb20{margin-bottom:20px;}
+.mb30{margin-bottom:30px;}
+.mb40{margin-bottom:40px;}
+.mb50{margin-bottom:50px;}
+.mb60{margin-bottom:60px;}
+.mb70{margin-bottom:70px;}
+.mb80{margin-bottom:80px;}
+.mb90{margin-bottom:90px;}
+.mb100{margin-bottom:100px;}
+
+.pt10{padding-top:10px;}
+.pt20{padding-top:20px;}
+.pt30{padding-top:30px;}
+.pt40{padding-top:40px;}
+.pt50{padding-top:50px;}
+.pt60{padding-top:60px;}
+.pt70{padding-top:70px;}
+.pt80{padding-top:80px;}
+.pt90{padding-top:90px;}
+.pt100{padding-top:100px;}
+
+.pb10{padding-bottom:10px;}
+.pb20{padding-bottom:20px;}
+.pb30{padding-bottom:30px;}
+.pb40{padding-bottom:40px;}
+.pb50{padding-bottom:50px;}
+.pb60{padding-bottom:60px;}
+.pb70{padding-bottom:70px;}
+.pb80{padding-bottom:80px;}
+.pb90{padding-bottom:90px;}
+.pb100{padding-bottom:100px;}
+
+
+
+
+
+
+
+
+
+
+.center-center{
+	display: -webkit-flex; display: -ms-flexbox; display: flex;
+	-ms-flex-flow:column nowrap; flex-flow:column nowrap;
+	-webkit-justify-content: center;-ms-flex-pack: center;justify-content: center;
+	-webkit-align-items: center;  -ms-flex-align: center; align-items: center;
+}
+
+
+[id$="_app"] button.delete{
+	font-size:14px;
+	font-weight:600;
+	letter-spacing: 0.07em;
+	background:#F00;
+	color:#FFF;
+	border:none;
+	border-radius:3px;
+	padding:0.4em 0.6em;
+}
+
+button.add{
+	font-size:14px;
+	font-weight:600;
+	letter-spacing: 0.07em;
+	background:#00a0d2;
+	color:#FFF;
+	border:none;
+	border-radius:3px;
+	padding:0.4em 0.6em;
+}
+
+button.save{
+	font-size:16px;
+	font-weight:600;
+	letter-spacing: 0.07em;
+	background:#33b912;
+	color:#FFF;
+	border:none;
+	border-radius:5px;
+	padding:0.4em 0.8em;
+}
+
+
+
+
+
+dl {
+    margin-block-start: 0em;
+    margin-block-end: 0em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+}
+
+.app-box dl{
+	line-height:1em;
+	border-bottom:1px solid #ccc;
+	padding:0;
+	display: -webkit-flex; display: -ms-flexbox; display: flex;
+	-ms-flex-flow:row nowrap;flex-flow:row nowrap;
+	-webkit-justify-content: flex-start;-ms-flex-pack: start;justify-content: flex-start; 
+	-webkit-align-items: stretch; -ms-flex-align:stretch; align-items: stretch;
+}
+.app-box dl *{
+	font-size:18px;padding:0.8em;margin:0;margin-inline-start: 0px;
+	display: -webkit-flex; display: -ms-flexbox; display: flex;
+	-ms-flex-flow:row nowrap; flex-flow:row nowrap;
+	-webkit-justify-content: flex-start;-ms-flex-pack: start;justify-content: flex-start; 
+	-webkit-align-items: center;  -ms-flex-align: center; align-items: center;
+}
+
+.app-box dl dt:nth-child(odd),.app-box dl dd:nth-child(odd){background:#efefef;}
+
+
+.app-box dl dt:nth-of-type(1){width:10%;}
+.app-box dl dt:nth-of-type(2){width:40%;}
+.app-box dl dt:nth-of-type(3){width:40%;}
+.app-box dl dt:nth-of-type(4){width:10%;}
+
+.app-box dl dd:nth-of-type(1){width:10%;}
+.app-box dl dd:nth-of-type(2){width:40%;}
+.app-box dl dd:nth-of-type(3){width:40%;}
+.app-box dl dd:nth-of-type(4){width:10%;}
+
+
+
+.app-box dl dt{font-weight:bold;}
+.app-box dl dd{}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* ラジオボタン,チェックボックス
+*********************************************************************************/
+[id$="_app"] .radio-set input[type="radio"],
+[id$="_app"] .checkbox-set input[type="checkbox"]{
+    display:none !important;
+}
+
+[id$="_app"] .radio-set label{
+    display:block;
+    padding:0.5em 1em;
+    color:#b90083;
+    border:1px solid #b90083;
+    transition: all 0.2s ease;
+    width:100%;
+    text-align:center;
+    margin:0 1px;
+    font-size:1vw;
+}
+
+[id$="_app"] .checkbox-set label{
+    display:block;
+    padding:0.5em 1em;
+    color:#c1272d;
+    border:1px solid #c1272d;
+    transition: all 0.2s ease;
+    width:100%;
+    text-align:center;
+    margin:2px;
+    font-size:1vw;
+}
+
+
+[id$="_app"] .radio-set label:hover{
+    cursor: pointer;
+    background:var(--mono-color-lightness);
+}
+[id$="_app"] .checkbox-set label:hover{
+    cursor: pointer;
+    background:var(--mono-color-lightness);
+}
+
+
+/*選択されているタブのスタイルを変える*/
+[id$="_app"] .radio-set input:checked + .radio_item {
+    background-color: #b90083;
+    color: #fff !important;
+}
+/*選択されているタブのスタイルを変える*/
+[id$="_app"] .checkbox-set input:checked + .checkbox_item {
+    background-color: #b90083;
+    color: #fff !important;
+}

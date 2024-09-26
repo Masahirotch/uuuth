@@ -1,0 +1,12 @@
+*{
+	--line        : #00B900;
+	--main-color  : #FFF;
+    --main-light  : #13448f;
+    --bg          : #0f2e5d;
+    --bg-light    : #13448f;
+    --text-color  : #FFF;
+    --footer-text : #13448f;
+    --cart-btn    : #FFF;
+    --cart-btn-bg : #0f2e5d;
+    --cart-btn-light: #13448f;
+}

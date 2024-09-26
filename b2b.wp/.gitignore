@@ -1,0 +1,8 @@
+# WordPress environment variables file
+wp-config.php
+# Log files
+log
+logs
+*.log
+# HIYOSHI original
+sftp-config.json

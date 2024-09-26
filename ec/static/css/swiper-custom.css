@@ -1,0 +1,13 @@
+@import url('style.css');
+/* Swiper */
+.product__image .swiper-pagination-bullets.swiper-pagination-horizontal {
+  bottom: -24px;
+}
+.product__image .swiper-pagination-bullet {
+  border-radius: 1px;
+  width: 20px;
+  height: 5px;
+}
+.product__image .swiper-pagination-bullet-active {
+  background-color: var(--subColor);
+}
